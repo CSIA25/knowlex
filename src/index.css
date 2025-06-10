@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 217 91% 60%; /* IB Blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 217 91% 60%;
+    --muted: 210 40% 98%; /* Lighter gray for backgrounds */
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 185 91% 41%; /* Vibrant Cyan */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-3xl font-bold tracking-tight text-center sm:text-4xl lg:text-5xl;
+  }
+  .section-subheading {
+    @apply mt-4 text-lg text-muted-foreground text-center max-w-3xl mx-auto;
+  }
+  .animate-marquee {
+    animation: marquee 50s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Dashboard Background Animation */
+@keyframes animated-gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animated-gradient-background {
+  background: linear-gradient(
+    -45deg,
+    hsl(var(--background)),
+    hsl(var(--primary) / 0.1),
+    hsl(var(--secondary) / 0.1),
+    hsl(var(--background))
+  );
+  background-size: 400% 400%;
+  animation: animated-gradient 15s ease infinite;
+}
